@@ -23,6 +23,8 @@ const Routes = () => {
     <Router>
 
 
+
+
       <Set wrap={ScaffoldLayout} title="BlogPosts" titleTo="blogPosts" buttonLabel="New BlogPost" buttonTo="newBlogPost">
 
         <Route path="/blog-posts/new" page={BlogPostNewBlogPostPage} name="newBlogPost" />
@@ -37,6 +39,7 @@ const Routes = () => {
 
       <Set wrap={BlogLayout}>
       <Route path="/read-post/{id:Int}" page={ReadPostPage} name="readPost" />
+      <Route path="/contact" page={ContactPage} name="contact" />
       <Route path="/about" page={AboutPage} name="about" />
       <Route path="/" page={HomePage} name="home" />
       </Set>

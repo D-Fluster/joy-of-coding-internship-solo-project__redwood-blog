@@ -6,6 +6,7 @@ const AboutPage = () => {
     <>
       <Metadata title="About" description="About page" />
       <main>
+      <h4><em>(~ BOILERPLATE ~)</em></h4>
       <h1>AboutPage</h1>
       <p>
         Find me in <code>./web/src/pages/AboutPage/AboutPage.tsx</code>

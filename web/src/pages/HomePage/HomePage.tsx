@@ -5,20 +5,16 @@ import ViewPostsCell from 'src/components/ViewPostsCell'
 const HomePage = () => {
   return (
     <>
-      <Metadata title="Home" description="Home page" />
+      <Metadata title="Dani's Redwood Blog" description="Welcome to Dani's Redwood Blog!" />
 
 <main>
-      <h2>Wazzaaap, I'm the Home Page&nbsp;<em><strong>!</strong></em></h2>
-      <p>
-        Find me in <code>./web/src/pages/HomePage/HomePage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>home</code>, link to me with `
-        <Link to={routes.home()}>Home</Link>`
-      </p>
-      <h2><em><strong>All Blog Posts:</strong></em></h2>
+      <h2><em><strong>
+        All Blog Posts:
+      </strong></em></h2>
+
       <ViewPostsCell />
-      </main>
+
+</main>
     </>
   )
 }
