@@ -7,8 +7,8 @@ export const schema = gql`
   }
 
   type Query {
-    blogPosts: [BlogPost!]! @requireAuth
-    blogPost(id: Int!): BlogPost @requireAuth
+    blogPosts: [BlogPost!]! @skipAuth
+    blogPost(id: Int!): BlogPost @skipAuth
   }
 
   input CreateBlogPostInput {

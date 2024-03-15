@@ -13,35 +13,43 @@
 // Tutorial: page "Article"       -->   DKF: page "ViewPost"
 // Tutorial: cell "Article"       -->   DKF: cell "ReadPost"
 // Tutorial: component "Article"  -->   DKF: component "ReadAPost"
+// Tutorial: model "Contact"      -->   DKF: model "ContactForm"
 
-import { Router, Route, Set } from '@redwoodjs/router'
-import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
+import { Router, Route, Set, PrivateSet } from '@redwoodjs/router'
+
 import BlogLayout from 'src/layouts/BlogLayout/BlogLayout'
+import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
+
+import { useAuth } from './auth'
 
 const Routes = () => {
   return (
-    <Router>
+    <Router useAuth={useAuth}>
+      <Route path="/login" page={LoginPage} name="login" />
 
+      <Route path="/signup" page={SignupPage} name="signup" />
 
+      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
 
+      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
 
-      <Set wrap={ScaffoldLayout} title="BlogPosts" titleTo="blogPosts" buttonLabel="New BlogPost" buttonTo="newBlogPost">
+      <PrivateSet unauthenticated="home">
+        <Set wrap={ScaffoldLayout} title="BlogPosts" titleTo="blogPosts" buttonLabel="New BlogPost" buttonTo="newBlogPost">
+          <Route path="/admin/blog-posts/new" page={BlogPostNewBlogPostPage} name="newBlogPost" />
 
-        <Route path="/blog-posts/new" page={BlogPostNewBlogPostPage} name="newBlogPost" />
+          <Route path="/admin/blog-posts/{id:Int}/edit" page={BlogPostEditBlogPostPage} name="editBlogPost" />
 
-        <Route path="/blog-posts/{id:Int}/edit" page={BlogPostEditBlogPostPage} name="editBlogPost" />
+          <Route path="/admin/blog-posts/{id:Int}" page={BlogPostBlogPostPage} name="blogPost" />
 
-        <Route path="/blog-posts/{id:Int}" page={BlogPostBlogPostPage} name="blogPost" />
-
-        <Route path="/blog-posts" page={BlogPostBlogPostsPage} name="blogPosts" />
-
-      </Set>
+          <Route path="/admin/blog-posts" page={BlogPostBlogPostsPage} name="blogPosts" />
+        </Set>
+      </PrivateSet>
 
       <Set wrap={BlogLayout}>
-      <Route path="/read-post/{id:Int}" page={ReadPostPage} name="readPost" />
-      <Route path="/contact" page={ContactPage} name="contact" />
-      <Route path="/about" page={AboutPage} name="about" />
-      <Route path="/" page={HomePage} name="home" />
+        <Route path="/read-post/{id:Int}" page={ReadPostPage} name="readPost" />
+        <Route path="/contact" page={ContactPage} name="contact" />
+        <Route path="/about" page={AboutPage} name="about" />
+        <Route path="/" page={HomePage} name="home" />
       </Set>
       <Route notfound page={NotFoundPage} />
     </Router>
