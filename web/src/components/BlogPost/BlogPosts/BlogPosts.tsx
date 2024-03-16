@@ -51,7 +51,7 @@ const BlogPostsList = ({ blogPosts }: FindBlogPosts) => {
           <tr>
             <th>Id</th>
             <th>Title</th>
-            <th>Description</th>
+            <th>Contents</th>
             <th>Created at</th>
             <th>&nbsp;</th>
           </tr>
@@ -61,7 +61,7 @@ const BlogPostsList = ({ blogPosts }: FindBlogPosts) => {
             <tr key={blogPost.id}>
               <td>{truncate(blogPost.id)}</td>
               <td>{truncate(blogPost.title)}</td>
-              <td>{truncate(blogPost.description)}</td>
+              <td>{truncate(blogPost.contents)}</td>
               <td>{timeTag(blogPost.createdAt)}</td>
               <td>
                 <nav className="rw-table-actions">

@@ -2,7 +2,7 @@ export const schema = gql`
   type BlogPost {
     id: Int!
     title: String!
-    description: String!
+    contents: String!
     createdAt: DateTime!
   }
 
@@ -13,12 +13,12 @@ export const schema = gql`
 
   input CreateBlogPostInput {
     title: String!
-    description: String!
+    contents: String!
   }
 
   input UpdateBlogPostInput {
     title: String
-    description: String
+    contents: String
   }
 
   type Mutation {

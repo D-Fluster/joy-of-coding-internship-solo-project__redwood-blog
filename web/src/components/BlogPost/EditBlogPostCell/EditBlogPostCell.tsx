@@ -20,7 +20,7 @@ export const QUERY: TypedDocumentNode<EditBlogPostById> = gql`
     blogPost: blogPost(id: $id) {
       id
       title
-      description
+      contents
       createdAt
     }
   }
@@ -34,7 +34,7 @@ const UPDATE_BLOG_POST_MUTATION: TypedDocumentNode<
     updateBlogPost(id: $id, input: $input) {
       id
       title
-      description
+      contents
       createdAt
     }
   }

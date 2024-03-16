@@ -15,7 +15,7 @@
 // Tutorial: component "Article"  -->   DKF: component "ReadAPost"
 // Tutorial: model "Contact"      -->   DKF: model "ContactForm"
 
-import { Router, Route, Set, PrivateSet } from '@redwoodjs/router'
+import { PrivateSet, Route, Router, Set } from '@redwoodjs/router'
 
 import BlogLayout from 'src/layouts/BlogLayout/BlogLayout'
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
@@ -26,21 +26,15 @@ const Routes = () => {
   return (
     <Router useAuth={useAuth}>
       <Route path="/login" page={LoginPage} name="login" />
-
       <Route path="/signup" page={SignupPage} name="signup" />
-
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
-
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
 
       <PrivateSet unauthenticated="home">
         <Set wrap={ScaffoldLayout} title="BlogPosts" titleTo="blogPosts" buttonLabel="New BlogPost" buttonTo="newBlogPost">
           <Route path="/admin/blog-posts/new" page={BlogPostNewBlogPostPage} name="newBlogPost" />
-
           <Route path="/admin/blog-posts/{id:Int}/edit" page={BlogPostEditBlogPostPage} name="editBlogPost" />
-
           <Route path="/admin/blog-posts/{id:Int}" page={BlogPostBlogPostPage} name="blogPost" />
-
           <Route path="/admin/blog-posts" page={BlogPostBlogPostsPage} name="blogPosts" />
         </Set>
       </PrivateSet>
@@ -51,11 +45,10 @@ const Routes = () => {
         <Route path="/about" page={AboutPage} name="about" />
         <Route path="/" page={HomePage} name="home" />
       </Set>
+
       <Route notfound page={NotFoundPage} />
     </Router>
   )
 }
 
 export default Routes
-
-// <Route path="/read-post/{id:Int}" ...

@@ -24,16 +24,16 @@ const SignupPage = () => {
     }
   }, [isAuthenticated])
 
-  // focus on user id box on page load
-  const userIdRef = useRef<HTMLInputElement>(null)
+  // focus on username box on page load
+  const userNameRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    userIdRef.current?.focus()
+    userNameRef.current?.focus()
   }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
     const response = await signUp({
-      username: data.userId,
-      password: data.secretCode,
+      username: data.userName,
+      password: data.passWord,
     })
 
     if (response.message) {
@@ -62,46 +62,46 @@ const SignupPage = () => {
               <div className="rw-form-wrapper">
                 <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <Label
-                    name="userId"
+                    name="userName"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    User ID
+                    UserName
                   </Label>
                   <TextField
-                    name="userId"
+                    name="userName"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
-                    ref={userIdRef}
+                    ref={userNameRef}
                     validation={{
                       required: {
                         value: true,
-                        message: 'User ID is required',
+                        message: 'UserName is required',
                       },
                     }}
                   />
-                  <FieldError name="userId" className="rw-field-error" />
+                  <FieldError name="userName" className="rw-field-error" />
 
                   <Label
-                    name="secretCode"
+                    name="passWord"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
                   >
-                    Secret Code
+                    PassWord
                   </Label>
                   <PasswordField
-                    name="secretCode"
+                    name="passWord"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
                     autoComplete="current-password"
                     validation={{
                       required: {
                         value: true,
-                        message: 'Secret Code is required',
+                        message: 'PassWord is required',
                       },
                     }}
                   />
-                  <FieldError name="secretCode" className="rw-field-error" />
+                  <FieldError name="passWord" className="rw-field-error" />
 
                   <div className="rw-button-group">
                     <Submit className="rw-button rw-button-blue">

@@ -30,11 +30,11 @@ describe('blogPosts', () => {
 
   scenario('creates a blogPost', async () => {
     const result = await createBlogPost({
-      input: { title: 'String', description: 'String' },
+      input: { title: 'String', contents: 'String' },
     })
 
     expect(result.title).toEqual('String')
-    expect(result.description).toEqual('String')
+    expect(result.contents).toEqual('String')
   })
 
   scenario('updates a blogPost', async (scenario: StandardScenario) => {

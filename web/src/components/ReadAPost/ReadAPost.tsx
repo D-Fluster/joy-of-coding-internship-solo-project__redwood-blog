@@ -1,5 +1,6 @@
-import { Link, routes } from "@redwoodjs/router"
-import { BlogPost } from "types/graphql"
+import { BlogPost } from 'types/graphql'
+
+import { Link, routes } from '@redwoodjs/router'
 
 interface Props {
   article: BlogPost
@@ -8,12 +9,16 @@ interface Props {
 const ReadAPost = ({ article }: Props) => {
   return (
     <article>
-    <header>
-      <h3><Link to={routes.readPost({ id: article.id })}>{article.title}</Link></h3>
-    </header>
-    <p>{article.description}</p>
-    <div><em>Posted:</em> {article.createdAt}</div>
-  </article>
+      <header>
+        <h3>
+          <Link to={routes.readPost({ id: article.id })}>{article.title}</Link>
+        </h3>
+      </header>
+      <p>{article.contents}</p>
+      <div>
+        <em>Posted:</em> {article.createdAt}
+      </div>
+    </article>
   )
 }
 

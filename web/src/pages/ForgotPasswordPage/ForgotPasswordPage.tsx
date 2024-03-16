@@ -16,13 +16,13 @@ const ForgotPasswordPage = () => {
     }
   }, [isAuthenticated])
 
-  const userIdRef = useRef<HTMLInputElement>(null)
+  const userNameRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    userIdRef?.current?.focus()
+    userNameRef?.current?.focus()
   }, [])
 
-  const onSubmit = async (data: { userId: string }) => {
-    const response = await forgotPassword(data.userId)
+  const onSubmit = async (data: { userName: string }) => {
+    const response = await forgotPassword(data.userName)
 
     if (response.error) {
       toast.error(response.error)
@@ -31,7 +31,7 @@ const ForgotPasswordPage = () => {
       // been invoked, let the user know how to get the link to reset their
       // password (sent in email, perhaps?)
       toast.success(
-        'A link to reset your secret code was sent to ' + response.email
+        'A link to reset your password was sent to ' + response.email
       )
       navigate(routes.login())
     }
@@ -39,7 +39,7 @@ const ForgotPasswordPage = () => {
 
   return (
     <>
-      <Metadata title="Forgot Secret Code" />
+      <Metadata title="Forgot PassWord" />
 
       <main className="rw-main">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
@@ -47,7 +47,7 @@ const ForgotPasswordPage = () => {
           <div className="rw-segment">
             <header className="rw-segment-header">
               <h2 className="rw-heading rw-heading-secondary">
-                Forgot Secret Code
+                Forgot PassWord
               </h2>
             </header>
 
@@ -56,26 +56,26 @@ const ForgotPasswordPage = () => {
                 <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <div className="text-left">
                     <Label
-                      name="userId"
+                      name="userName"
                       className="rw-label"
                       errorClassName="rw-label rw-label-error"
                     >
-                      User ID
+                      UserName
                     </Label>
                     <TextField
-                      name="userId"
+                      name="userName"
                       className="rw-input"
                       errorClassName="rw-input rw-input-error"
-                      ref={userIdRef}
+                      ref={userNameRef}
                       validation={{
                         required: {
                           value: true,
-                          message: 'User ID is required',
+                          message: 'UserName is required',
                         },
                       }}
                     />
 
-                    <FieldError name="userId" className="rw-field-error" />
+                    <FieldError name="userName" className="rw-field-error" />
                   </div>
 
                   <div className="rw-button-group">

@@ -1,7 +1,6 @@
-import { Link, routes } from '@redwoodjs/router'
-
 import type { ViewPostsQuery, ViewPostsQueryVariables } from 'types/graphql'
 
+import { Link, routes } from '@redwoodjs/router'
 import type {
   CellSuccessProps,
   CellFailureProps,
@@ -18,7 +17,7 @@ export const QUERY: TypedDocumentNode<
     viewPosts: blogPosts {
       id
       title
-      description
+      contents
       createdAt
     }
   }

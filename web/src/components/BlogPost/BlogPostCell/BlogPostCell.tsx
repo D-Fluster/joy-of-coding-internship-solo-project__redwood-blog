@@ -16,7 +16,7 @@ export const QUERY: TypedDocumentNode<
     blogPost: blogPost(id: $id) {
       id
       title
-      description
+      contents
       createdAt
     }
   }

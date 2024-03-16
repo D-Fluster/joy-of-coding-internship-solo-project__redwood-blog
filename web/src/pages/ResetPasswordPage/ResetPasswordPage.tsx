@@ -37,21 +37,21 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
     validateToken()
   }, [resetToken, validateResetToken])
 
-  const secretCodeRef = useRef<HTMLInputElement>(null)
+  const passWordRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    secretCodeRef.current?.focus()
+    passWordRef.current?.focus()
   }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
     const response = await resetPassword({
       resetToken,
-      password: data.secretCode,
+      password: data.passWord,
     })
 
     if (response.error) {
       toast.error(response.error)
     } else {
-      toast.success('Secret Code changed!')
+      toast.success('PassWord changed!')
       await reauthenticate()
       navigate(routes.login())
     }
@@ -59,7 +59,7 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
 
   return (
     <>
-      <Metadata title="Reset Secret Code" />
+      <Metadata title="Reset PassWord" />
 
       <main className="rw-main">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
@@ -67,7 +67,7 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
           <div className="rw-segment">
             <header className="rw-segment-header">
               <h2 className="rw-heading rw-heading-secondary">
-                Reset Secret Code
+                Reset PassWord
               </h2>
             </header>
 
@@ -76,28 +76,28 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
                 <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <div className="text-left">
                     <Label
-                      name="secretCode"
+                      name="passWord"
                       className="rw-label"
                       errorClassName="rw-label rw-label-error"
                     >
-                      New Secret Code
+                      New PassWord
                     </Label>
                     <PasswordField
-                      name="secretCode"
+                      name="passWord"
                       autoComplete="new-password"
                       className="rw-input"
                       errorClassName="rw-input rw-input-error"
                       disabled={!enabled}
-                      ref={secretCodeRef}
+                      ref={passWordRef}
                       validation={{
                         required: {
                           value: true,
-                          message: 'New Secret Code is required',
+                          message: 'New PassWord is required',
                         },
                       }}
                     />
 
-                    <FieldError name="secretCode" className="rw-field-error" />
+                    <FieldError name="passWord" className="rw-field-error" />
                   </div>
 
                   <div className="rw-button-group">

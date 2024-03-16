@@ -53,22 +53,22 @@ const BlogPostForm = (props: BlogPostFormProps) => {
         <FieldError name="title" className="rw-field-error" />
 
         <Label
-          name="description"
+          name="contents"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Description
+          Contents
         </Label>
 
         <TextField
-          name="description"
-          defaultValue={props.blogPost?.description}
+          name="contents"
+          defaultValue={props.blogPost?.contents}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
 
-        <FieldError name="description" className="rw-field-error" />
+        <FieldError name="contents" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

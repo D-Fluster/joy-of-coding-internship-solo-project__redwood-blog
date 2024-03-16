@@ -62,8 +62,8 @@ const BlogPost = ({ blogPost }: Props) => {
               <td>{blogPost.title}</td>
             </tr>
             <tr>
-              <th>Description</th>
-              <td>{blogPost.description}</td>
+              <th>Contents</th>
+              <td>{blogPost.contents}</td>
             </tr>
             <tr>
               <th>Created at</th>
