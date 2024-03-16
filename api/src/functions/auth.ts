@@ -131,6 +131,10 @@ export const handler = async (
       salt,
       userAttributes: _userAttributes,
     }) => {
+      return false
+    },
+
+    /* To allow new users to sign up:
       return db.user.create({
         data: {
           email: username,
@@ -139,7 +143,7 @@ export const handler = async (
           // name: userAttributes.name
         },
       })
-    },
+    */
 
     // Include any format checks for password here. Return `true` if the
     // password is valid, otherwise throw a `PasswordValidationError`.
